@@ -1,0 +1,620 @@
+/* Modern Swiss Design System */
+
+:root {
+  --bg-color: #F8F8F8;
+  /* Slightly off-white */
+  --text-color: #050505;
+  --line-color: #D1D1D1;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --spacing-outer: 4vw;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.2;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+/* Dark Theme for Year Pages */
+.theme-dark {
+  --bg-color: #050505;
+  --text-color: #ffffff;
+  --line-color: #333333;
+}
+
+.theme-dark .nav {
+  mix-blend-mode: normal;
+  color: #fff;
+}
+
+/* Typography Utilities */
+.text-huge {
+  font-size: clamp(60px, 14vw, 200px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-right: -0.05em;
+}
+
+/* Specific Hero Tweaks */
+.hero-name {
+  font-size: clamp(80px, 15vw, 220px);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  display: block;
+}
+
+.hero-title {
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 400;
+  text-transform: lowercase;
+  display: block;
+  margin-top: 20px;
+  opacity: 0.8;
+  letter-spacing: 0;
+}
+
+.text-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.text-body {
+  font-size: clamp(16px, 1.5vw, 24px);
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 32em;
+}
+
+/* Layout Core */
+.wrapper {
+  width: 100%;
+  padding: 0 var(--spacing-outer);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--line-color);
+  margin: 0;
+}
+
+/* Navigation - Floating */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px var(--spacing-outer);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  color: #050505;
+  /* Black for homepage */
+}
+
+.nav-invert {
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+.nav-logo {
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+}
+
+.nav-spacer {
+  height: 100px;
+}
+
+/* Sections */
+section {
+  position: relative;
+  padding: 10vh 0;
+}
+
+.grid-cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.grid-cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Profile Page */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  margin-top: 60px;
+}
+
+.bio-text {
+  font-size: clamp(18px, 1.5vw, 28px);
+  line-height: 1.5;
+  font-weight: 400;
+  text-align: left;
+}
+
+/* Hero */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 10vh;
+}
+
+.hero-sub {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* About Section */
+.about-split {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 40px;
+}
+
+/* Image Utilities */
+.img-block {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background-color: #E5E5E5;
+}
+
+.img-block img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  filter: grayscale(100%);
+}
+
+.img-block:hover img {
+  transform: scale(1.03);
+}
+
+/* Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Book Style Textures & Layout */
+.texture-cover {
+  background-color: #080808;
+  color: #ffffff;
+  /* Subtle noise or texture can be added via SVG or image url if available, for now pure dark charcoal */
+  position: relative;
+  /* Add noise overlay via pseudo-element if desired */
+}
+
+.texture-paper {
+  background-color: #F4F1EA;
+  /* Warm paper tone */
+  color: #000000;
+  position: relative;
+}
+
+/* Book Cover Section (Full Height) */
+.year-cover-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* Book Inner Section (Gallery) */
+.year-inner-section {
+  padding: 100px var(--spacing-outer);
+  min-height: 100vh;
+}
+
+/* Photobook Grid Style - Organic Radiating */
+.scatter-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  /* Tighter gap */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.scatter-item {
+  margin: 0;
+  height: 250px;
+  /* Fixed height for organic width */
+  width: auto;
+  flex-shrink: 0;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  position: relative;
+}
+
+.scatter-item .img-block {
+  width: auto;
+  height: 100%;
+}
+
+.scatter-item img {
+  display: block;
+  height: 100%;
+  width: auto;
+  /* Natural width */
+}
+
+.scatter-item:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Text Blocks in Grid */
+.scatter-text {
+  width: 200px;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  color: #000;
+}
+
+/* Remove old random offsets */
+.scatter-item:nth-child(2n),
+.scatter-item:nth-child(3n),
+.scatter-item:nth-child(5n) {
+  margin-top: 0;
+  margin-left: 0;
+}
+
+/* Lightbox Overlay */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 5, 5, 0.98);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  margin: auto;
+  /* Double ensure centering */
+  transition: transform 0.1s ease-out;
+  /* Smooth zoom */
+  transform-origin: center center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  opacity: 0.7;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 20px;
+  opacity: 0.7;
+  z-index: 1001;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+/* Paper Note Styling */
+.paper-note {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  /* Move to bottom left */
+  right: auto;
+  width: 60px;
+  height: 60px;
+  /* Match page background #F4F1EA with 90% opacity */
+  background-color: rgba(244, 241, 234, 0.9);
+  background-image: none;
+  /* Remove dots */
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1002;
+  transform: rotate(-2deg);
+  border-radius: 2px;
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 0;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+  /* Slight blur for texture feel */
+}
+
+.paper-note::before {
+  content: '+';
+  font-size: 30px;
+  color: #555;
+  font-family: var(--font-sans);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+}
+
+.paper-note.expanded {
+  width: 300px;
+  /* Expanded width */
+  height: auto;
+  min-height: 100px;
+  padding: 25px;
+  transform: rotate(0deg);
+  /* align straight */
+  font-size: 24px;
+  line-height: 1.3;
+  cursor: text;
+  /* Keep in bottom left */
+  bottom: 40px;
+  left: 40px;
+  right: auto;
+  top: auto;
+}
+
+.paper-note.expanded::before {
+  opacity: 0;
+}
+
+.note-content {
+  opacity: 0;
+  transition: opacity 0.3s 0.2s;
+  /* Delay fade in */
+  width: 100%;
+}
+
+.paper-note.expanded .note-content {
+  opacity: 1;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .scatter-grid {
+    column-count: 1;
+  }
+
+  .scatter-item:nth-child(n) {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}
+
+/* Profile Specific */
+.profile-container {
+  width: 100%;
+  max-width: 90vw;
+  /* Much wider as requested */
+  margin: 0 auto;
+  padding-top: 15vh;
+}
+
+.profile-img-landscape {
+  width: 100%;
+  height: auto;
+  /* Allow natural height */
+  margin-bottom: 60px;
+  display: block;
+  /* Removed flex alignment since it's an image now */
+}
+
+.profile-img-landscape img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+
+  .scatter-item,
+  .scatter-item:nth-child(odd),
+  .scatter-item:nth-child(even),
+  .scatter-item:nth-child(3n) {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .year-cover-section {
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-bottom: 100px;
+  }
+}
+
+/* Year List */
+.year-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 60px 0;
+  border-bottom: 1px solid var(--line-color);
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.year-row:hover {
+  background-color: #fff;
+  margin: 0 calc(-1 * var(--spacing-outer));
+  padding: 60px var(--spacing-outer);
+}
+
+.theme-dark .year-row:hover {
+  background-color: #111;
+  /* Subtle hover for dark mode */
+}
+
+.year-huge {
+  font-size: clamp(80px, 12vw, 150px);
+  line-height: 0.8;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+
+.year-desc {
+  width: 40%;
+  padding-top: 10px;
+}
+
+/* Footer */
+.footer {
+  padding: 15vh 0 5vh 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .grid-cols-2,
+  .grid-cols-3,
+  .about-split,
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .year-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .year-desc {
+    width: 100%;
+  }
+
+  .hero-sub {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
